@@ -69,7 +69,7 @@ class Main {
             default:
                 throw new Exception("Неизвестная операция: " + operator);
         }
-
+        if (isNum1Roman && result < 1) throw new Exception("Некорректный результат для римских чисел (меньше I).");
         return isNum1Roman ? arabicToRoman(result) : String.valueOf(result);
     }
 
@@ -103,10 +103,7 @@ class Main {
         return result;
     }
 
-    private static String arabicToRoman(int number) {
-        if (number < 1) {
-            return "Некорректный результат для римских чисел (меньше I).";
-        }
+    public static String arabicToRoman(int number) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < arabicValues.length; i++) {
             while (number >= arabicValues[i]) {
